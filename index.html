@@ -1,0 +1,158 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="NEO Mist - Advanced AI Chat Interface">
+    <meta name="theme-color" content="#f0f0f0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&family=Montserrat:wght@600;700&family=Lato:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.1.1/math.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar-wrapper">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="mobile-hamburger" id="mobileToggle" aria-label="Toggle Menu" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-zap" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 2L3 14h9l-1 8L21 10h-9l1-8z"/>
+                </svg>
+                <span class="model-name">Neo L1.0 Ultra</span>
+                <span class="tech-engine">S.U.I</span>
+            </div>
+            <div class="top-bar-right" id="topBarIcons">
+                <div class="top-bar-icon" id="stopwatchBtn" title="Stopwatch" aria-label="Stopwatch" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <div class="top-bar-icon" id="memoryBtn" title="Neo Memory" aria-label="Neo Memory" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                    </svg>
+                </div>
+                <div class="top-bar-icon" id="settingsBtn" title="Settings" aria-label="Settings" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="left-bars" id="leftBars">
+            <div class="bar-thin" id="barThin">
+                <div class="toggle-icon" id="toggleIcon" aria-label="Toggle Sidebar" role="button" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <div class="icon-wrapper" id="newChatBtn" aria-label="New Chat" role="button" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                    <div class="tooltip">New Chat</div>
+                </div>
+                <div class="line"></div>
+                <div class="icon-wrapper" id="searchBtn" aria-label="Search Chat" role="button" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <div class="tooltip">Search Chat</div>
+                </div>
+                <div class="line"></div>
+                <div class="icon-wrapper" id="historyBtn" aria-label="Chat History" role="button" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
+                    </svg>
+                    <div class="tooltip">Chat History</div>
+                </div>
+                <div class="line"></div>
+                <div class="icon-wrapper" id="tasksBtn" aria-label="Tasks" role="button" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div class="tooltip">Tasks</div>
+                </div>
+                <div class="line"></div>
+                <div class="icon-wrapper" id="themeToggleBtn" aria-label="Toggle Theme" role="button" tabindex="0">
+                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Sun rays for light mode -->
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        <!-- Moon overlay hidden in light -->
+                        <path id="moonPath" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" style="display: none; fill: currentColor; opacity: 0.8;"></path>
+                    </svg>
+                    <div class="tooltip">Toggle Theme</div>
+                </div>
+            </div>
+            <div class="bar-wide" id="wideBar">
+                <div class="text-wrapper" id="newChatWideBtn" aria-label="New Chat" role="button" tabindex="0"><span> neo ask </span></div>
+                <div class="line"></div>
+                <div class="text-wrapper" id="searchWideBtn" aria-label="Search Chat" role="button" tabindex="0"><span>Search Chat</span></div>
+                <div class="line"></div>
+                <div class="text-wrapper" id="historyWideBtn" aria-label="Chat History" role="button" tabindex="0"><span>Chat History</span></div>
+                <div class="line"></div>
+                <div class="text-wrapper" id="tasksWideBtn" aria-label="Tasks" role="button" tabindex="0"><span>Tasks</span></div>
+                <div class="line"></div>
+                <div class="text-wrapper" id="themeToggleWideBtn" aria-label="Toggle Theme" role="button" tabindex="0"><span>vibe</span></div>
+                <div class="line"></div>
+                <div id="sidebarChatList"></div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="welcome-section" id="welcomeSection">
+                <h2> NEO </h2>
+                <p>Neo now provides ultra-summaries using layered analysis from multiple sources. Experience smarter, more contextual responses with our advanced backend integration.</p>
+            </div>
+            <div class="chat-area" id="chatArea" role="log" aria-live="polite"></div>
+        </div>
+    </div>
+    <div class="message-area">
+        <div class="input-wrapper">
+            <div id="attachBtn" title="Attach file/image" aria-label="Attach file/image" role="button" tabindex="0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                </svg>
+            </div>
+            <textarea id="neoInput" placeholder="Ask something Neo…" rows="1" aria-label="Message input"></textarea>
+        </div>
+    </div>
+    <div id="sendBtn" aria-label="Send message" role="button" tabindex="0">
+        <svg viewBox="0 0 24 24" id="iconBolt"><path d="M13 2L3 14h9l-1 8L21 10h-9l1-8z"/></svg>
+        <svg viewBox="0 0 24 24" id="iconSquare"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+    </div>
+    <button id="scrollBtn" aria-label="Scroll to top/bottom">
+        <svg id="scrollIconDown" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <svg id="scrollIconUp" viewBox="0 0 24 24" style="display:none;">
+            <path d="M7 14l5-5 5 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>
